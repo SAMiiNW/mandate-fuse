@@ -7,5 +7,7 @@ def test_contract_guards():
 def test_frontend_finality():
  s=(ROOT/'docs/index.html').read_text()
  assert 'WAITING FOR FINALIZED' in s and 'status:"FINALIZED"' in s
- assert 'fuse-line' in s and 'rail' not in s
+ assert s.count('data-scene=') == 4
+ assert 'PRESS TO<br>SEAL' in s and 'PULL TO IGNITE' in s
+ assert 'class="hatch"' not in s and 'class="drawer"' not in s
 

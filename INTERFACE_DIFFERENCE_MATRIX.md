@@ -2,8 +2,9 @@
 
 | Dimension | Mandate Fuse | Reciprocal Draft |
 |---|---|---|
-| Input journey | Arm one scoped delegation | Populate two participant rails |
-| Composition | Horizontal fuse line and control hatch | Spatial field between west/east rails |
-| Primary action | Delegate ignites once | Anyone draws pairs after entries |
-| Result | Terminal burn mark | Multiple visible pair threads |
+| Input journey | Four full-screen scenes: engrave, bind, seal, burn | Focused sheets place one need or offer at a time |
+| Composition | Sequential instrument with no persistent form controls | Dotted tabletop between two physical slip racks |
+| Primary action | Press a circular seal, then pull a single lever | Draw mutual threads across the table |
+| Result | Burned fuse plus a sealed audit receipt | Paired slips connected spatially |
+| Mobile behavior | Scenes remain linear; action chamber stacks after fuse | Table moves above stacked racks |
 
