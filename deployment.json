@@ -1,9 +1,9 @@
 {
   "network": "StudioNet",
-  "contractAddress": "0x8392416D51383D2450Db379C8f8e2c3737B601AA",
-  "deploymentTransaction": "0xe1c26395bb6886e9e68de4915a8a2377019bd74dc3c6cee0c3f2b65bdf6337dd",
-  "sourceSha256": "98a571d03d651c31d4761c934853cadff092632de961b6cf8e72581db58e1f8b",
-  "sourceCommit": "a5cb65bb40a9d017a49c3ceb32170d37d4d5fef7",
+  "contractAddress": "0xd50Db8fdE2CCf8c1B86788EE5ed4d4F585F8c005",
+  "deploymentTransaction": "0x653879a8465fc3b66b307133c8ed6085f7de8d7c309d1ffa863fed9d2eaca97d",
+  "sourceSha256": "5648f2c20ac877ace5699d91e66ec616fb9870d5e95a98980c4b8f86c6d1527d",
+  "sourceCommit": "9ca67b3b65a2b4605f8e309ca1d10c00878091cf",
   "repository": "https://github.com/SAMiiNW/mandate-fuse",
   "publicSite": "https://mandate-fuse.pages.dev/"
 }

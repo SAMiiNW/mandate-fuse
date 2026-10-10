@@ -76,10 +76,10 @@ class MandateFuse(gl.Contract):
   return gl.eq_principle.prompt_comparative(run,principle='independently refetch the frozen policy and proposed action, verify exact digests, and agree on the exact WITHIN or OUTSIDE verdict and complete bounded reason-code set')
 
  @gl.public.write
- def arm(self,fuse_id:str,delegate:Address,mandate:str,policy_url:str,duration_seconds:u256)->None:
-  key=ident(fuse_id); person=Address(str(delegate)); scope=clean(mandate,900); url=https(policy_url); duration=int(duration_seconds)
-  if key in self.fuses or person==ZERO or person==gl.message.sender_address or len(scope)<40 or duration<300 or duration>604800: raise gl.vm.UserError('[EXPECTED] unique fuse, distinct delegate, detailed mandate, and valid duration required')
-  digest=self._freeze(url); self.fuses[key]=Fuse(gl.message.sender_address,person,scope,url,digest,u256(now()+duration),'ARMED','','','', '[]')
+ def arm(self,fuse_id:str,delegate:Address,mandate:str,policy_url:str,expires_at:u256)->None:
+  key=ident(fuse_id); person=Address(str(delegate)); scope=clean(mandate,900); url=https(policy_url); expiry=int(expires_at); current=now()
+  if key in self.fuses or person==ZERO or person==gl.message.sender_address or len(scope)<40 or expiry<current+300 or expiry>current+604800: raise gl.vm.UserError('[EXPECTED] unique fuse, distinct delegate, detailed mandate, and valid expiry required')
+  digest=self._freeze(url); self.fuses[key]=Fuse(gl.message.sender_address,person,scope,url,digest,u256(expiry),'ARMED','','','', '[]')
 
  @gl.public.write
  def ignite(self,fuse_id:str,action_url:str)->dict:
