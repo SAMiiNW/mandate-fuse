@@ -51,15 +51,6 @@ class MandateFuse(gl.Contract):
   if key not in self.fuses: raise gl.vm.UserError('[EXPECTED] fuse not found')
   return key,self.fuses[key]
 
- def _freeze(self,url):
-  def run():
-   response=gl.nondet.web.get(url)
-   if response.status!=200: raise gl.vm.UserError('[EXTERNAL] policy unavailable')
-   body=raw(response)
-   if len(body)<30 or len(body)>100000: raise gl.vm.UserError('[EXTERNAL] policy outside size bounds')
-   return hashlib.sha256(body).hexdigest()
-  return gl.eq_principle.prompt_comparative(run,principle='independently refetch the exact public policy bytes and agree on the exact SHA-256 digest')
-
  def _inspect(self,mandate,policy_url,policy_digest,action_url):
   def run():
    policy_response=gl.nondet.web.get(policy_url); action_response=gl.nondet.web.get(action_url)
@@ -74,10 +65,10 @@ class MandateFuse(gl.Contract):
   return gl.eq_principle.prompt_comparative(run,principle='independently refetch the frozen policy and proposed action, verify exact digests, and agree on the exact binary WITHIN or OUTSIDE scope verdict')
 
  @gl.public.write
- def arm(self,fuse_id:str,delegate:Address,mandate:str,policy_url:str,expires_at:u256)->None:
-  key=ident(fuse_id); person=Address(str(delegate)); scope=clean(mandate,900); url=https(policy_url); expiry=int(expires_at); current=now()
-  if key in self.fuses or person==ZERO or person==gl.message.sender_address or len(scope)<40 or expiry<current+300 or expiry>current+604800: raise gl.vm.UserError('[EXPECTED] unique fuse, distinct delegate, detailed mandate, and valid expiry required')
-  digest=self._freeze(url); self.fuses[key]=Fuse(gl.message.sender_address,person,scope,url,digest,u256(expiry),'ARMED','','','', '[]')
+ def arm(self,fuse_id:str,delegate:Address,mandate:str,policy_url:str,policy_digest:str,expires_at:u256)->None:
+  key=ident(fuse_id); person=Address(str(delegate)); scope=clean(mandate,900); url=https(policy_url); digest=clean(policy_digest,64).lower(); expiry=int(expires_at); current=now()
+  if key in self.fuses or person==ZERO or person==gl.message.sender_address or len(scope)<40 or not re.fullmatch(r'[0-9a-f]{64}',digest) or expiry<current+300 or expiry>current+604800: raise gl.vm.UserError('[EXPECTED] unique fuse, distinct delegate, detailed mandate, exact policy digest, and valid expiry required')
+  self.fuses[key]=Fuse(gl.message.sender_address,person,scope,url,digest,u256(expiry),'ARMED','','','', '[]')
 
  @gl.public.write
  def ignite(self,fuse_id:str,action_url:str)->dict:
