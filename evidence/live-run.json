@@ -1,19 +1,20 @@
 {
-  "fuseId": "FUSE-1791671828",
-  "contract": "0x341495bAE517e023a3923D2DC89496579B90EF51",
-  "delegate": "0x5e79e4bb310104Ad300fC8374E192F5d4Ef9eB94",
+  "fuseId": "FUSE-1792201082",
+  "contract": "0xF7570d13BD240d9DEaa52C159e3567091E548Ccf",
+  "delegate": "0x7d34ED3541691Efb004B58aa3c4D007c8641D766",
   "transactions": {
-    "arm": "0x553fe3cbbfad5b265ed52ed0f986d3fb3c45978c1b83eb1dbf33397786b6a452",
-    "unauthorized": "0xa41c816e2021f6547f90d0986fc9a151bdab2216d8d9325f8328dd043fbe9cce",
-    "ignite": "0xc8ad42b414aef65118bf13430b9dca33f98946a0ee3db4513a36e3f386468386"
+    "arm": "0xa83ef2f4b0b722d44a3286fc32c4ba0e11091af34a4114396390109e9a944a9d",
+    "unauthorized": "0x29978c62e72d71ed4c24f4edfe89eeb510d47b87c1f38673116d3366e9862063",
+    "beyondBoundary": "0xae539d32574e238bc99122425cb92dc477f1ce8c5ce466ea461371b5487bc10a",
+    "ignite": "0x83870e7b116cf84ff087adf089123f5e686b4227e2a2a993053e8a5083e14733"
   },
   "final": {
     "action_digest": "587d9fc400eb7c1f31e9ad1657308c05f90c87ea6e8a7eb52e37e5ded14f8ce1",
     "action_url": "https://raw.githubusercontent.com/SAMiiNW/mandate-fuse/main/fixtures/action-within.md",
-    "delegate": "0x5e79e4bb310104Ad300fC8374E192F5d4Ef9eB94",
-    "expires_at": 1791675429,
+    "delegate": "0x7d34ED3541691Efb004B58aa3c4D007c8641D766",
+    "expires_at": 1792204683,
     "grantor": "0xCAFA30BF94D4fb01146588a1b7901BD85E7DbD0f",
-    "id": "FUSE-1791671828",
+    "id": "FUSE-1792201082",
     "mandate": "Publish one documentation-only release note for Lantern 2.4.1. Do not modify source code, dependencies, access controls, payment settings, or repository visibility.",
     "policy_digest": "5197f830dda85f64378740ea8c5ad0e07d7b1018eb36fc0c64d6ad07ac23a2a4",
     "policy_url": "https://raw.githubusercontent.com/SAMiiNW/mandate-fuse/main/fixtures/policy.md",
@@ -31,5 +32,14 @@
     ],
     "stateUnchanged": true
   },
-  "fixtureDisclosure": "Policy, action, grantor, and delegate are operator-controlled fixtures used to prove address-bound authority, frozen-policy consensus, terminal execution, and unauthorized-call rejection."
+  "beyondBoundaryAttempt": {
+    "consensus": "MAJORITY_AGREE",
+    "execution": [
+      "ERROR",
+      "ERROR"
+    ],
+    "stateUnchanged": true,
+    "expected": "Artifact above 12,000 bytes is rejected whole; no truncated approval is possible."
+  },
+  "fixtureDisclosure": "Policy, action, grantor, and delegate are operator-controlled fixtures used to prove address-bound authority, complete-content size enforcement, frozen-policy consensus, terminal execution, and unauthorized-call rejection."
 }
